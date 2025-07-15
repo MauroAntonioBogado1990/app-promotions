@@ -69,9 +69,9 @@ app.add_middleware(
 #         return {"error": f"❌ Error inesperado: {str(e)}"}
     
 
-
+#apikey de maptiler : Ls7yI4nYgwreJ0NUyN99
 # 🔐 Configuración fija
-ODOO_URL = "http://localhost:8069"
+ODOO_URL = "http://host.docker.internal:8069"
 ODOO_DB = "admin"
 ODOO_USER = "carlos@gmail.com"
 ODOO_PASSWORD = "carlos"

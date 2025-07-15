@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import maplibregl from 'maplibre-gl';
-
+  import Ventas from './Ventas.svelte';
+  import Mapas from './Mapas.svelte';
+  import CrearUsuario from './CrearUsuario.svelte'
   let mapContainer: HTMLDivElement;
   let latitude = -34.61;
   let longitude = -58.38;
@@ -27,7 +29,7 @@
   function loadMap() {
     const map = new maplibregl.Map({
       container: mapContainer,
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=TU_API_KEY',
+      style: 'https://api.maptiler.com/maps/streets/style.json?key=Ls7yI4nYgwreJ0NUyN99',
       center: [longitude, latitude],
       zoom: 13
     });
@@ -68,7 +70,7 @@
 
 <!-- 🧭 Navbar -->
 <nav class="navbar">
-  <div class="logo">🚚 Mi App ERP</div>
+  <div class="logo">🚚 Conexión Camiones ERP</div>
   <div class="tabs">
     <button on:click={() => currentSection = 'bienvenida'}>Inicio</button>
     <button on:click={() => currentSection = 'mapa'}>Mapa</button>
@@ -89,6 +91,8 @@
       <input id="password" type="password" bind:value={password} required placeholder="••••••••" />
 
       <button type="submit">Ingresar</button>
+      <h6>Si no posee cuenta, crear cuenta</h6> 
+      <button on:click={() => currentSection = 'crear_usuario'}>Crear Cuenta</button>
     </form>
 
     {#if success}
@@ -101,17 +105,15 @@
 {/if}
 
 {#if currentSection === 'mapa'}
-  <section class="section">
-    <h2>Ubicación actual</h2>
-    <div bind:this={mapContainer} class="map-container"></div>
-  </section>
+  <Mapas />
 {/if}
 
 {#if currentSection === 'ventas'}
-  <section class="section">
-    <h2>Ventas</h2>
-    <p>Aquí podrías mostrar órdenes o informes de ventas conectados desde Odoo 📊</p>
-  </section>
+  <Ventas />
+{/if}
+
+{#if currentSection === 'crear_usuario'}
+  <CrearUsuario />
 {/if}
 
 {#if currentSection === 'compras'}
