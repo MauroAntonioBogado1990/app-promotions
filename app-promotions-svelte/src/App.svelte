@@ -27,12 +27,7 @@
   });
 
   function loadMap() {
-    const map = new maplibregl.Map({
-      container: mapContainer,
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=Ls7yI4nYgwreJ0NUyN99',
-      center: [longitude, latitude],
-      zoom: 13
-    });
+    
 
     new maplibregl.Marker()
       .setLngLat([longitude, latitude])

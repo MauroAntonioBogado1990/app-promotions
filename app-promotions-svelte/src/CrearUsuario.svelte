@@ -1,6 +1,8 @@
 <script lang="ts">
   let nombre = "";
+  let apellido = "";
   let dni = "";
+  let direccion = "";
   let foto: File | null = null;
   let mensaje = "";
   
@@ -14,7 +16,9 @@
   async function crearUsuario() {
     const formData = new FormData();
     formData.append("nombre", nombre);
+    formData.append("apellido", apellido);
     formData.append("dni", dni);
+    formData.append("direccion", direccion);
     if (foto) {
       formData.append("foto", foto);
     }
@@ -53,7 +57,9 @@ input, button {
 <div class="form-container">
   <h2>👤 Crear Usuario</h2>
   <input type="text" bind:value={nombre} placeholder="Nombre" required />
+  <input type="text" bind:value={apellido} placeholder="Apellido" required />
   <input type="text" bind:value={dni} placeholder="DNI" required />
+  <input type="text" bind:value={direccion} placeholder="Direccion" required />
   <input type="file" accept="image/*" on:change={handleFotoChange} />
 
   {#if foto}
